@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sales Intelligence — Smart Retail Analytics</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="nav-brand">
+      <span>📊</span> Sales Intelligence
+    </div>
+    <ul class="nav-links">
+      <li id="nav-upload"  style="display:none;"><a href="upload.html">Upload</a></li>
+      <li id="nav-profile" style="display:none;"><a href="profile.html">Profile</a></li>
+      <li id="nav-history" style="display:none;"><a href="history.html">History</a></li>
+      <li id="nav-login"><a href="login.html">Login</a></li>
+      <li id="nav-register"><a href="register.html" class="btn-nav">Create Account</a></li>
+      <li id="nav-logout" style="display:none;">
+        <a href="#" onclick="handleLogout(); return false;">Logout</a>
+      </li>
+    </ul>
+  </nav>
+
+  <div class="page-wrapper">
+    <div class="container">
+
+      <!-- Hero Section -->
+      <section class="hero">
+        <div class="hero-text">
+          <div class="hero-tag">🚀 Smart Retail Analytics</div>
+          <h1>Grow Your Shop with <em>Data Intelligence</em></h1>
+          <p class="hero-desc">
+            Upload your sales data and let our machine learning system
+            analyze trends, predict demand, and send you WhatsApp insights — 
+            in English and Tamil.
+          </p>
+          <div class="hero-cta">
+            <a href="register.html" class="btn btn-primary">Get Started Free</a>
+            <a href="login.html"    class="btn btn-outline">Login</a>
+          </div>
+        </div>
+
+        <!-- Hero visual cards -->
+        <div class="hero-visual">
+          <div class="hero-card-stack">
+            <div class="stat-card">
+              <div class="stat-label">Tomorrow's Forecast</div>
+              <div class="stat-value">₹21,259</div>
+              <div class="stat-change up">▲ +54.4% vs today</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-label">Best Selling Product</div>
+              <div class="stat-value" style="font-size:1.2rem;">Nike Sneakers</div>
+              <div class="stat-change up">📈 Rising trend</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-label">Stock Alert</div>
+              <div class="stat-value" style="font-size:1.1rem;color:#c94c2e;">3 Critical</div>
+              <div class="stat-change down">🔴 Order immediately</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div><!-- /container -->
+
+    <!-- Features Section -->
+    <section class="features-section">
+      <div class="container">
+        <div class="section-label">What We Offer</div>
+        <h2 class="section-title">Everything Your Shop Needs</h2>
+        <p class="section-sub">Four powerful AI-driven modules designed for small retailers.</p>
+
+        <div class="features-grid">
+          <div class="feature-card">
+            <span class="feature-icon">🔮</span>
+            <h3>Sales Forecast</h3>
+            <p>ML model predicts tomorrow's revenue with confidence range based on trends and context.</p>
+          </div>
+          <div class="feature-card">
+            <span class="feature-icon">📈</span>
+            <h3>Trend Analysis</h3>
+            <p>See which products are rising, falling, or stable to make smarter buying decisions.</p>
+          </div>
+          <div class="feature-card">
+            <span class="feature-icon">📦</span>
+            <h3>Stock Recommendation</h3>
+            <p>Get exact reorder quantities and alerts before you run out of critical stock.</p>
+          </div>
+          <div class="feature-card">
+            <span class="feature-icon">💡</span>
+            <h3>Business Insight</h3>
+            <p>Plain-language insights sent to your WhatsApp in English and Tamil automatically.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-section">
+      <div class="container">
+        <div class="section-label">How It Works</div>
+        <h2 class="section-title">Three Simple Steps</h2>
+        <p class="section-sub">No technical knowledge needed. Just upload your Excel files.</p>
+
+        <div class="steps-row">
+          <div class="step">
+            <div class="step-num">1</div>
+            <h3>Create Account & Login</h3>
+            <p>Register with your shop details and phone number. We use it to send your WhatsApp insights.</p>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <h3>Upload Your Excel Files</h3>
+            <p>Upload three files: sales.xlsx, stock.xlsx, and product.xlsx. Our system validates them instantly.</p>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <h3>Receive Insights on WhatsApp</h3>
+            <p>AI generates forecasts and insights in English and Tamil, then sends them directly to you.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Banner -->
+    <div class="container">
+      <div class="cta-banner">
+        <h2>Ready to Analyze Your Sales?</h2>
+        <p>Join retailers who are making smarter decisions with AI-powered insights.</p>
+        <a href="register.html" class="btn btn-primary">Create Free Account →</a>
+      </div>
+    </div>
+
+    <footer>
+      <p>Sales Intelligence — College Project &copy; 2024. Built for small retailers.</p>
+    </footer>
+
+  </div><!-- /page-wrapper -->
+
+  <script src="js/validation.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+</html>

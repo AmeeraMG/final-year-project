@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login — Sales Intelligence</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <a class="nav-brand" href="index.html">
+      <span>📊</span> Sales Intelligence
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="register.html" class="btn-nav">Create Account</a></li>
+    </ul>
+  </nav>
+
+  <!-- Auth page layout: left panel + right form -->
+  <div class="auth-page">
+
+    <!-- Left decorative panel -->
+    <div class="auth-left">
+      <h1>Welcome back.</h1>
+      <p>Login to view your sales forecasts, trends, and stock alerts — all in one place.</p>
+      <div class="feature-chips">
+        <span class="chip">🔮 Sales Forecast</span>
+        <span class="chip">📈 Trend Analysis</span>
+        <span class="chip">📦 Stock Alerts</span>
+        <span class="chip">💬 WhatsApp Insights</span>
+      </div>
+    </div>
+
+    <!-- Right form panel -->
+    <div class="auth-right">
+      <div class="auth-form-box">
+
+        <h2>Login</h2>
+        <p class="subtitle">Enter your phone number and password to continue.</p>
+
+        <!-- Alert box for success/error messages -->
+        <div class="alert" id="login-alert"></div>
+
+        <form id="login-form" novalidate>
+
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              placeholder="+919876543210"
+              autocomplete="tel"
+              value="+91"
+            />
+            <span class="error-msg" id="phone-error"></span>
+            <small style="color:var(--muted);font-size:0.8rem;display:block;margin-top:4px;">
+              Format: +91 followed by 10 digits (e.g. +919876543210)
+            </small>
+          </div>
+
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="Enter your password"
+              autocomplete="current-password"
+            />
+            <span class="error-msg" id="password-error"></span>
+          </div>
+
+          <button
+            type="submit"
+            id="login-btn"
+            class="btn btn-primary btn-full"
+            style="margin-top: 0.5rem;"
+          >
+            Login
+          </button>
+
+        </form>
+
+        <div class="divider">or</div>
+
+        <p style="text-align:center;font-size:0.9rem;color:var(--muted);">
+          Don't have an account? 
+          <a href="register.html" style="font-weight:600;">Create Account</a>
+        </p>
+
+      </div>
+    </div>
+
+  </div><!-- /auth-page -->
+
+  <script src="js/validation.js"></script>
+  <script src="js/auth.js"></script>
+  <script>
+    // Attach form submit handler
+    document.getElementById("login-form").addEventListener("submit", handleLogin);
+
+    // If already logged in, redirect to upload page
+    if (getUserSession()) {
+      window.location.href = "upload.html";
+    }
+  </script>
+
+</body>
+</html>

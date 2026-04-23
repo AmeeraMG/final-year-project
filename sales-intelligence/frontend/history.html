@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Upload History — Sales Intelligence</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <a class="nav-brand" href="index.html">
+      <span>📊</span> Sales Intelligence
+    </a>
+    <ul class="nav-links">
+      <li id="nav-upload"><a href="upload.html">Upload</a></li>
+      <li id="nav-history"><a href="history.html" style="color:var(--rust);">History</a></li>
+      <li id="nav-profile"><a href="profile.html">Profile</a></li>
+      <li id="nav-logout">
+        <a href="#" onclick="handleLogout(); return false;">Logout</a>
+      </li>
+    </ul>
+  </nav>
+
+  <div class="page-wrapper">
+    <div class="container history-page">
+
+      <div style="margin-bottom:2rem;">
+        <h1 style="font-family:'Playfair Display',serif;font-size:2.2rem;">Upload History</h1>
+        <p style="color:var(--muted);margin-top:0.3rem;">
+          All your past sales data uploads in one place.
+        </p>
+      </div>
+
+      <!-- Alert box -->
+      <div class="alert" id="history-alert"></div>
+
+      <!-- History table -->
+      <div style="overflow-x:auto;border-radius:var(--radius-lg);box-shadow:var(--shadow-sm);">
+        <table class="history-table">
+          <thead>
+            <tr>
+              <th>Upload Date</th>
+              <th>Sales File</th>
+              <th>Stock File</th>
+              <th>Product File</th>
+              <th>WhatsApp</th>
+            </tr>
+          </thead>
+          <tbody id="history-tbody">
+            <tr>
+              <td colspan="5" style="text-align:center;color:var(--muted);padding:2rem;">
+                Loading history...
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Empty state (shown if no records) -->
+      <div class="empty-state" id="history-empty" style="display:none;">
+        <div class="icon">📂</div>
+        <h3>No uploads yet</h3>
+        <p style="font-size:0.9rem;">
+          Upload your first sales data file to see history here.
+        </p>
+        <a href="upload.html" class="btn btn-primary" style="margin-top:1.2rem;">
+          Upload Now
+        </a>
+      </div>
+
+      <div style="margin-top:2rem;">
+        <a href="upload.html" class="btn btn-primary">+ New Upload</a>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="js/validation.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/upload.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const user = requireLogin();
+      if (!user) return;
+      loadHistory();
+    });
+  </script>
+
+</body>
+</html>

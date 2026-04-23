@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Upload Files — Sales Intelligence</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <a class="nav-brand" href="index.html">
+      <span>📊</span> Sales Intelligence
+    </a>
+    <ul class="nav-links">
+      <li id="nav-upload"><a href="upload.html" style="color:var(--rust);">Upload</a></li>
+      <li id="nav-history"><a href="history.html">History</a></li>
+      <li id="nav-profile"><a href="profile.html">Profile</a></li>
+      <li id="nav-logout">
+        <a href="#" onclick="handleLogout(); return false;">Logout</a>
+      </li>
+    </ul>
+  </nav>
+
+  <div class="page-wrapper">
+    <div class="container upload-page">
+
+      <!-- Page header -->
+      <div class="upload-header">
+        <h1 id="upload-greeting">Upload Your Sales Data</h1>
+        <p>Upload three Excel files to get AI-powered forecasts and WhatsApp insights.</p>
+      </div>
+
+      <!-- Alert box -->
+      <div class="alert" id="upload-alert"></div>
+
+      <!-- Three file drop zones -->
+      <div class="upload-grid">
+
+        <!-- Sales file -->
+        <div class="file-drop-zone" id="sales-zone">
+          <input type="file" id="sales-input" accept=".xlsx" />
+          <span class="file-icon">📊</span>
+          <div class="file-name">sales.xlsx</div>
+          <div class="file-hint">
+            Required columns:<br/>
+            date, product_name, quantity_sold, unit_price
+          </div>
+          <div class="file-chosen"></div>
+        </div>
+
+        <!-- Stock file -->
+        <div class="file-drop-zone" id="stock-zone">
+          <input type="file" id="stock-input" accept=".xlsx" />
+          <span class="file-icon">📦</span>
+          <div class="file-name">stock.xlsx</div>
+          <div class="file-hint">
+            Required columns:<br/>
+            date, product_name, stock_loaded
+          </div>
+          <div class="file-chosen"></div>
+        </div>
+
+        <!-- Product file -->
+        <div class="file-drop-zone" id="product-zone">
+          <input type="file" id="product-input" accept=".xlsx" />
+          <span class="file-icon">🏷️</span>
+          <div class="file-name">product.xlsx</div>
+          <div class="file-hint">
+            Required columns:<br/>
+            product_id, product_name, costprice
+          </div>
+          <div class="file-chosen"></div>
+        </div>
+
+      </div><!-- /upload-grid -->
+
+      <!-- Info note about required files -->
+      <div style="background:var(--cream);border:1px solid var(--border);border-radius:var(--radius);
+                  padding:1rem 1.4rem;margin-bottom:1.5rem;font-size:0.88rem;color:var(--muted);">
+        ℹ️ All three files must be <strong>.xlsx</strong> format.
+        After upload, the ML system will analyze your data and send insights to your WhatsApp.
+      </div>
+
+      <!-- Upload button -->
+      <button class="btn btn-primary" id="upload-btn" style="min-width:200px;">
+        🚀 Analyze &amp; Send Insights
+      </button>
+
+      <!-- Loading indicator -->
+      <div class="loader" id="upload-loader">
+        <div class="spinner"></div>
+        <p style="color:var(--muted);font-size:0.95rem;">
+          Processing your files with ML model...<br/>
+          <small>This may take 10–30 seconds</small>
+        </p>
+      </div>
+
+      <!-- Results section (hidden until upload succeeds) -->
+      <div class="results-section" id="results-section">
+
+        <h2 style="font-family:'Playfair Display',serif;font-size:1.8rem;margin-bottom:1.5rem;margin-top:2rem;">
+          📋 Analysis Results
+        </h2>
+
+        <!-- Quick stat row -->
+        <div class="stat-row">
+          <div class="mini-stat">
+            <div class="val" id="res-sales">—</div>
+            <div class="lbl">Today's Sales</div>
+          </div>
+          <div class="mini-stat">
+            <div class="val" id="res-units">—</div>
+            <div class="lbl">Units Sold</div>
+          </div>
+          <div class="mini-stat">
+            <div class="val" id="res-forecast">—</div>
+            <div class="lbl">Tomorrow Forecast</div>
+          </div>
+          <div class="mini-stat">
+            <div class="val" id="res-change">—</div>
+            <div class="lbl">Expected Change</div>
+          </div>
+        </div>
+
+        <!-- Results cards grid -->
+        <div class="results-grid">
+
+          <!-- English insights -->
+          <div class="result-card">
+            <h3>🇬🇧 English Insights</h3>
+            <div class="insight-msg" id="insight-english">Loading...</div>
+            <div id="whatsapp-badge" class="whatsapp-badge" style="display:none;">
+              ✅ Sent to WhatsApp
+            </div>
+          </div>
+
+          <!-- Tamil insights -->
+          <div class="result-card">
+            <h3>🇮🇳 Tamil Insights</h3>
+            <div class="insight-msg" id="insight-tamil">Loading...</div>
+          </div>
+
+          <!-- Stock alerts -->
+          <div class="result-card">
+            <h3>⚠️ Stock Alerts</h3>
+            <table style="width:100%;border-collapse:collapse;font-size:0.85rem;">
+              <thead>
+                <tr>
+                  <th style="text-align:left;padding:6px 0;color:var(--muted);font-size:0.75rem;text-transform:uppercase;">Product</th>
+                  <th style="text-align:left;padding:6px 0;color:var(--muted);font-size:0.75rem;text-transform:uppercase;">Stock</th>
+                  <th style="text-align:left;padding:6px 0;color:var(--muted);font-size:0.75rem;text-transform:uppercase;">Days Left</th>
+                  <th style="text-align:left;padding:6px 0;color:var(--muted);font-size:0.75rem;text-transform:uppercase;">Status</th>
+                </tr>
+              </thead>
+              <tbody id="stock-tbody">
+                <tr><td colspan="4" style="color:var(--muted);font-size:0.9rem;">Upload files to see alerts</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Trend analysis -->
+          <div class="result-card">
+            <h3>📈 Product Trends</h3>
+            <div id="trends-list">
+              <p style="color:var(--muted);font-size:0.9rem;">Upload files to see trends</p>
+            </div>
+          </div>
+
+        </div><!-- /results-grid -->
+
+        <!-- WhatsApp badge shown after successful send -->
+        <div style="margin-top:1.5rem;">
+          <span id="whatsapp-badge" class="whatsapp-badge" style="display:none;"></span>
+        </div>
+
+        <div style="margin-top:2rem;display:flex;gap:1rem;">
+          <a href="history.html" class="btn btn-secondary">View Upload History</a>
+          <button class="btn btn-outline" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+            Upload Another File
+          </button>
+        </div>
+
+      </div><!-- /results-section -->
+
+    </div><!-- /container -->
+  </div><!-- /page-wrapper -->
+
+  <script src="js/validation.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/upload.js"></script>
+
+  <script>
+    // Show whatsapp badge only after results load
+    document.addEventListener("DOMContentLoaded", () => {
+      const badge = document.getElementById("whatsapp-badge");
+      if (badge) badge.style.display = "none";
+    });
+  </script>
+
+</body>
+</html>

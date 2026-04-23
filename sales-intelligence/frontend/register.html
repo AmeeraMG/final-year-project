@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Create Account — Sales Intelligence</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <a class="nav-brand" href="index.html">
+      <span>📊</span> Sales Intelligence
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="login.html" class="btn-nav">Login</a></li>
+    </ul>
+  </nav>
+
+  <div class="auth-page">
+
+    <!-- Left decorative panel -->
+    <div class="auth-left">
+      <h1>Start your journey.</h1>
+      <p>Create a free account to get AI-powered insights for your retail shop — delivered straight to WhatsApp.</p>
+      <div class="feature-chips">
+        <span class="chip">🏪 For Small Retailers</span>
+        <span class="chip">🇮🇳 Tamil &amp; English</span>
+        <span class="chip">📲 WhatsApp Delivery</span>
+        <span class="chip">🤖 ML Powered</span>
+      </div>
+    </div>
+
+    <!-- Right form panel -->
+    <div class="auth-right">
+      <div class="auth-form-box">
+
+        <h2>Create Account</h2>
+        <p class="subtitle">Fill in your shop details to get started.</p>
+
+        <!-- Alert box -->
+        <div class="alert" id="register-alert"></div>
+
+        <form id="register-form" novalidate>
+
+          <div class="form-group">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" placeholder="e.g. Ravi Kumar" autocomplete="name" />
+            <span class="error-msg" id="name-error"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              placeholder="+919876543210"
+              autocomplete="tel"
+              value="+91"
+            />
+            <span class="error-msg" id="phone-error"></span>
+            <small style="color:var(--muted);font-size:0.8rem;display:block;margin-top:4px;">
+              This number will receive your WhatsApp insights.
+            </small>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="you@example.com" autocomplete="email" />
+            <span class="error-msg" id="email-error"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="Minimum 6 characters"
+              autocomplete="new-password"
+            />
+            <span class="error-msg" id="password-error"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="shop_name">Shop Name</label>
+            <input type="text" id="shop_name" name="shop_name" placeholder="e.g. Ravi General Store" />
+            <span class="error-msg" id="shop_name-error"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="location">Location</label>
+            <input type="text" id="location" name="location" placeholder="e.g. Chennai, Tamil Nadu" />
+            <span class="error-msg" id="location-error"></span>
+          </div>
+
+          <button
+            type="submit"
+            id="register-btn"
+            class="btn btn-primary btn-full"
+            style="margin-top: 0.5rem;"
+          >
+            Create Account
+          </button>
+
+        </form>
+
+        <div class="divider">or</div>
+
+        <p style="text-align:center;font-size:0.9rem;color:var(--muted);">
+          Already have an account?
+          <a href="login.html" style="font-weight:600;">Login</a>
+        </p>
+
+      </div>
+    </div>
+
+  </div>
+
+  <script src="js/validation.js"></script>
+  <script src="js/auth.js"></script>
+  <script>
+    document.getElementById("register-form").addEventListener("submit", handleRegister);
+
+    // Redirect if already logged in
+    if (getUserSession()) {
+      window.location.href = "upload.html";
+    }
+  </script>
+
+</body>
+</html>

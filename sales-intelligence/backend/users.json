@@ -1,0 +1,42 @@
+{
+  "+919384625350": {
+    "name": "Tamilarasi G",
+    "phone": "+919384625350",
+    "email": "tamilarasi200627@gmail.com",
+    "password": "90249f045f3631ea3de23d4f15247c0ec5e7e47a0d87022d49bfcea0a16a2bc7",
+    "shop_name": "Jeans Store",
+    "location": "Chennai"
+  },
+  "+918300751023": {
+    "name": "Ameera",
+    "phone": "+918300751023",
+    "email": "ameera0812@gmail.com",
+    "password": "bd16a563420c492613035988fa6d01f2de0d51ff404b72c1b3d106227a9725cf",
+    "shop_name": "Queen",
+    "location": "Chennai"
+  },
+  "+919025018881": {
+    "name": "Tamilarasi G",
+    "phone": "+919025018881",
+    "email": "admin@gmail.com",
+    "password": "dd130a849d7b29e5541b05d2f7f86a4acd4f1ec598c1c9438783f56bc4f0ff80",
+    "shop_name": "Queen",
+    "location": "Chennai"
+  },
+  "+916369034928": {
+    "name": "Harni",
+    "phone": "+916369034928",
+    "email": "admin@gmail.com",
+    "password": "78d61df28c506f4a525fa6dcce9fa32d9d825ecf3070ea48ad97453f716f49bc",
+    "shop_name": "Jeans Store",
+    "location": "Chennai"
+  },
+  "+919342903098": {
+    "name": "Nasrin",
+    "phone": "+919342903098",
+    "email": "demo@smartsales.com",
+    "password": "ff9b947a9532a244c3b5f49d5b6acf386ee2c2d6e644e27557f947ae6db598a8",
+    "shop_name": "Jeans Store",
+    "location": "Chennai"
+  }
+}
